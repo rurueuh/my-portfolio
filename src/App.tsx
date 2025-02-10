@@ -1,17 +1,21 @@
-import { motion } from 'framer-motion';
-import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
-import SkillsLayout from './skill';
+import SkillsLayout from "./skill";
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1 } }
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1 },
+  },
 };
 
 const Home = () => {
   return (
-    <div className="w-full h-screen overflow-y-auto snap-y snap-proximity scroll-smooth bg-gray-900 text-white">
-      <section className="h-screen flex flex-col justify-center items-center snap-start">
+    <div className="w-full scroll-smooth bg-gray-900 text-white">
+      <section className="h-screen flex flex-col justify-center items-center">
         <motion.h1
           className="text-5xl font-bold"
           initial={{ opacity: 0, y: -50 }}
@@ -20,6 +24,7 @@ const Home = () => {
         >
           Bienvenue sur mon Portfolio
         </motion.h1>
+
         <motion.p
           className="mt-4 text-lg text-gray-300"
           initial={{ opacity: 0 }}
@@ -44,6 +49,7 @@ const Home = () => {
         >
           Développeur Opérationnel (DevOps)
         </motion.p>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -52,6 +58,7 @@ const Home = () => {
         >
           <Button className="bg-blue-600 px-6 py-3 rounded-lg">Me Contacter</Button>
         </motion.div>
+
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 1.5 }}
@@ -61,8 +68,9 @@ const Home = () => {
         </motion.div>
       </section>
 
+      {/* Section 2 : À propos */}
       <motion.section
-        className="h-screen flex flex-col justify-center items-center snap-start"
+        className="h-screen flex flex-col justify-center items-center"
         variants={sectionVariants}
         initial="hidden"
         whileInView="visible"
@@ -77,12 +85,14 @@ const Home = () => {
         </p>
       </motion.section>
 
+      {/* Section 3 : Compétences (SkillsLayout) */}
       <div className="relative bg-gray-100 dark:bg-gray-900">
         <SkillsLayout />
       </div>
 
+      {/* Section 4 : Contact */}
       <motion.section
-        className="h-screen flex flex-col justify-center items-center snap-start"
+        className="h-screen flex flex-col justify-center items-center"
         variants={sectionVariants}
         initial="hidden"
         whileInView="visible"

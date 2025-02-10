@@ -33,7 +33,6 @@ export default function SkillsLayout() {
         const distance = sectionHeight - viewportHeight;
 
         if (distance <= 0) {
-          // Section <= viewport => 0 ou 1
           return scrollY >= offsetTop ? 1 : 0;
         }
         const raw = (scrollY - offsetTop) / distance;
@@ -107,12 +106,12 @@ function NavItem({
   label,
   active,
   progress,
-}: {
+}: Readonly<{
   href: string;
   label: string;
   active: boolean;
   progress: number;
-}) {
+}>) {
   return (
     <div className="flex flex-col space-y-1">
       {/* Barre horizontale */}
@@ -144,10 +143,10 @@ function NavItem({
 function WebSection({
   parentRef,
   onActive,
-}: {
+}: Readonly<{
   parentRef: React.RefObject<HTMLElement | null>;
   onActive: (id: string) => void;
-}) {
+}>) {
   const { ref, inView } = useInView({
     threshold: 0.4,
   });
@@ -195,10 +194,10 @@ function WebSection({
 function CppSection({
   parentRef,
   onActive,
-}: {
+}: Readonly<{
   parentRef: React.RefObject<HTMLElement | null>;
   onActive: (id: string) => void;
-}) {
+}>) {
   const { ref, inView } = useInView({
     threshold: 0.4,
   });
@@ -242,10 +241,10 @@ function CppSection({
 function DevOpsSection({
   parentRef,
   onActive,
-}: {
+}: Readonly<{
   parentRef: React.RefObject<HTMLElement | null>;
   onActive: (id: string) => void;
-}) {
+}>) {
   const { ref, inView } = useInView({
     threshold: 0.4,
   });
