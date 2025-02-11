@@ -20,7 +20,7 @@ export default function SkillsLayout() {
     setActiveSection(sectionId);
   }, []);
 
-  // Calcul progression
+  // Calcul progression au scroll
   useEffect(() => {
     function handleScroll() {
       const scrollY = window.scrollY;
@@ -28,38 +28,28 @@ export default function SkillsLayout() {
 
       function calcProgress(sectionEl: HTMLElement | null) {
         if (!sectionEl) return 0;
+
         const offsetTop = sectionEl.offsetTop;
         const sectionHeight = sectionEl.offsetHeight;
+        // zone de scroll interne à cette section
         const distance = sectionHeight - viewportHeight;
 
-        if (distance <= 0) {
-          return scrollY >= offsetTop ? 1 : 0;
-        }
+        // Au lieu d'une condition "distance <= 0 => 1 ou 0" 
+        // on fait un calcul direct qui peut dépasser 1 si la section 
+        // est plus petite que l'écran, mais on borne ensuite
         const raw = (scrollY - offsetTop) / distance;
+
+        // On borne entre 0 et 1
         return Math.max(0, Math.min(1, raw));
       }
 
-      // On met à jour les 3
-      const w = calcProgress(webRef.current);
-      const c = calcProgress(cppRef.current);
-      const d = calcProgress(devopsRef.current);
-
-      setWebProgress(w);
-      setCppProgress(c);
-      setDevopsProgress(d);
-
-      // Debug
-      console.log({
-        scrollY,
-        webProgress: w,
-        cppProgress: c,
-        devopsProgress: d,
-      });
+      setWebProgress(calcProgress(webRef.current));
+      setCppProgress(calcProgress(cppRef.current));
+      setDevopsProgress(calcProgress(devopsRef.current));
     }
 
     window.addEventListener("scroll", handleScroll);
     handleScroll(); // première init
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -106,19 +96,18 @@ function NavItem({
   label,
   active,
   progress,
-}: Readonly<{
+}: {
   href: string;
   label: string;
   active: boolean;
   progress: number;
-}>) {
+}) {
   return (
     <div className="flex flex-col space-y-1">
       {/* Barre horizontale */}
       <div className="h-2 w-full bg-gray-700 rounded">
         <motion.div
           className="h-2 bg-pink-600 rounded"
-          // On applique un width de 0% à 100% selon progress
           animate={{ width: `${(progress * 100).toFixed(2)}%` }}
           transition={{ duration: 0.2 }}
         />
@@ -139,16 +128,19 @@ function NavItem({
   );
 }
 
-// ---------- Web Section -----------
+// ----- Web Section -----
 function WebSection({
   parentRef,
   onActive,
-}: Readonly<{
+}: {
   parentRef: React.RefObject<HTMLElement | null>;
   onActive: (id: string) => void;
-}>) {
+}) {
   const { ref, inView } = useInView({
-    threshold: 0.4,
+    threshold: 0,
+    // On décale la zone d'observation de 50% en haut et en bas,
+    // pour éviter qu'elle soit activée trop tôt
+    rootMargin: "-50% 0px -50% 0px",
   });
 
   useEffect(() => {
@@ -159,7 +151,7 @@ function WebSection({
     <section
       id="web"
       ref={parentRef}
-      // IMPORTANT : plus grand que la fenêtre => 150vh
+      // section plus haute que l'écran => progression
       className="h-[150vh] border-b border-gray-200 dark:border-gray-700 flex items-start pt-10"
     >
       <motion.div
@@ -167,39 +159,28 @@ function WebSection({
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="mx-auto max-w-2xl"
+        className="mx-auto max-w-2xl text-center"
       >
         <h3 className="text-3xl font-semibold mb-4">Développement Web</h3>
         <p className="mb-4 text-gray-700 dark:text-gray-300">
-          Du contenu assez long pour forcer un scroll.
-        </p>
-        <p className="mb-4 text-gray-700 dark:text-gray-300">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-          laoreet mi sit amet ornare molestie. Phasellus nec lorem non
-          metus aliquet sollicitudin. Nullam lacinia enim eu convallis
-          tristique. 
-        </p>
-        <p className="mb-4 text-gray-700 dark:text-gray-300">
-          Continuez à scroller pour voir la barre rose augmenter à gauche.
-        </p>
-        <p className="mb-4 text-gray-700 dark:text-gray-300">
-          ...
+          Du contenu plus ou moins long...
         </p>
       </motion.div>
     </section>
   );
 }
 
-// ---------- C++ Section -----------
+// ----- C++ Section -----
 function CppSection({
   parentRef,
   onActive,
-}: Readonly<{
+}: {
   parentRef: React.RefObject<HTMLElement | null>;
   onActive: (id: string) => void;
-}>) {
+}) {
   const { ref, inView } = useInView({
-    threshold: 0.4,
+    threshold: 0,
+    rootMargin: "-50% 0px -50% 0px",
   });
 
   useEffect(() => {
@@ -217,36 +198,28 @@ function CppSection({
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="mx-auto max-w-2xl"
+        className="mx-auto max-w-2xl text-center"
       >
         <h3 className="text-3xl font-semibold mb-4">C++</h3>
         <p className="mb-4 text-gray-700 dark:text-gray-300">
-          Encore du texte pour forcer un défilement vertical.
-        </p>
-        <p className="mb-4 text-gray-700 dark:text-gray-300">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-        </p>
-        <p className="mb-4 text-gray-700 dark:text-gray-300">
-          Scrollez pour voir la barre rose se remplir lorsque vous avancez dans cette section.
-        </p>
-        <p className="mb-4 text-gray-700 dark:text-gray-300">
-          ...
+          Se déclenche quand le ref arrive au milieu de l'écran environ.
         </p>
       </motion.div>
     </section>
   );
 }
 
-// ---------- DevOps Section -----------
+// ----- DevOps Section -----
 function DevOpsSection({
   parentRef,
   onActive,
-}: Readonly<{
+}: {
   parentRef: React.RefObject<HTMLElement | null>;
   onActive: (id: string) => void;
-}>) {
+}) {
   const { ref, inView } = useInView({
-    threshold: 0.4,
+    threshold: 0,
+    rootMargin: "-50% 0px -50% 0px",
   });
 
   useEffect(() => {
@@ -264,14 +237,12 @@ function DevOpsSection({
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="mx-auto max-w-2xl"
+        className="mx-auto max-w-2xl text-center"
       >
         <h3 className="text-3xl font-semibold mb-4">DevOps</h3>
         <p className="mb-4 text-gray-700 dark:text-gray-300">
-          Encore du contenu...
-        </p>
-        <p className="mb-4 text-gray-700 dark:text-gray-300">
-          ...pour tester la progression de la barre rose
+          Pareil, l'activation est décalée pour éviter 
+          qu'elle se produise trop tôt.
         </p>
       </motion.div>
     </section>
