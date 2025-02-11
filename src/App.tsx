@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 import SkillsLayout from "./skill";
 
+// Variants pour les animations
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
   visible: {
@@ -15,6 +16,7 @@ const sectionVariants = {
 const Home = () => {
   return (
     <div className="w-full scroll-smooth bg-gray-900 text-white">
+      {/* Section 1 : Page d'accueil */}
       <section className="h-screen flex flex-col justify-center items-center">
         <motion.h1
           className="text-5xl font-bold"

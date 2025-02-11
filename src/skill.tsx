@@ -29,17 +29,13 @@ export default function SkillsLayout() {
       function calcProgress(sectionEl: HTMLElement | null) {
         if (!sectionEl) return 0;
 
-        const offsetTop = sectionEl.offsetTop;
-        const sectionHeight = sectionEl.offsetHeight;
-        // zone de scroll interne à cette section
+        const offsetSection = 1;
+        const offsetTop = sectionEl.offsetTop + (1480 * offsetSection);
+        const sectionHeight = sectionEl.offsetHeight + 600;
         const distance = sectionHeight - viewportHeight;
 
-        // Au lieu d'une condition "distance <= 0 => 1 ou 0" 
-        // on fait un calcul direct qui peut dépasser 1 si la section 
-        // est plus petite que l'écran, mais on borne ensuite
         const raw = (scrollY - offsetTop) / distance;
 
-        // On borne entre 0 et 1
         return Math.max(0, Math.min(1, raw));
       }
 
@@ -104,7 +100,6 @@ function NavItem({
 }) {
   return (
     <div className="flex flex-col space-y-1">
-      {/* Barre horizontale */}
       <div className="h-2 w-full bg-gray-700 rounded">
         <motion.div
           className="h-2 bg-pink-600 rounded"
@@ -113,7 +108,6 @@ function NavItem({
         />
       </div>
 
-      {/* Lien */}
       <motion.a
         href={href}
         style={{ backgroundColor: active ? "#db2777" : "transparent" }}
@@ -128,7 +122,6 @@ function NavItem({
   );
 }
 
-// ----- Web Section -----
 function WebSection({
   parentRef,
   onActive,
@@ -152,7 +145,7 @@ function WebSection({
       id="web"
       ref={parentRef}
       // section plus haute que l'écran => progression
-      className="h-[150vh] border-b border-gray-200 dark:border-gray-700 flex items-start pt-10"
+      className="h-[100vh] border-b border-gray-200 dark:border-gray-700 flex items-start pt-10"
     >
       <motion.div
         ref={ref}
@@ -170,7 +163,6 @@ function WebSection({
   );
 }
 
-// ----- C++ Section -----
 function CppSection({
   parentRef,
   onActive,
@@ -191,7 +183,7 @@ function CppSection({
     <section
       id="cpp"
       ref={parentRef}
-      className="h-[150vh] border-b border-gray-200 dark:border-gray-700 flex items-start pt-10"
+      className="h-[100vh] border-b border-gray-200 dark:border-gray-700 flex items-start pt-10"
     >
       <motion.div
         ref={ref}
@@ -209,7 +201,6 @@ function CppSection({
   );
 }
 
-// ----- DevOps Section -----
 function DevOpsSection({
   parentRef,
   onActive,
@@ -230,7 +221,7 @@ function DevOpsSection({
     <section
       id="devops"
       ref={parentRef}
-      className="h-[150vh] border-b border-gray-200 dark:border-gray-700 flex items-start pt-10"
+      className="h-[100vh] border-b border-gray-200 dark:border-gray-700 flex items-start pt-10"
     >
       <motion.div
         ref={ref}
