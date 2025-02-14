@@ -1,110 +1,22 @@
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { ArrowDown } from "lucide-react";
-import SkillsLayout from "./skill";
+// src/App.tsx
+import React from 'react';
+import HomeSection from './sections/HomeSection';
+import AboutSection from './sections/AboutSection';
+import SkillsSection from './sections/SkillsSection';
+import ProjectsSection from './sections/ProjectsSection';
+import ContactSection from './sections/ContactSection';
 
-// Variants pour les animations
-const sectionVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 1 },
-  },
-};
-
-const Home = () => {
+const App: React.FC = () => {
   return (
-    <div className="w-full scroll-smooth bg-gray-900 text-white">
-      {/* Section 1 : Page d'accueil */}
-      <section className="h-screen flex flex-col justify-center items-center">
-        <motion.h1
-          className="text-5xl font-bold"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
-          Bienvenue sur mon Portfolio
-        </motion.h1>
-
-        <motion.p
-          className="mt-4 text-lg text-gray-300"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 1 }}
-        >
-          Développeur Web FullStack
-        </motion.p>
-        <motion.p
-          className="mt-4 text-lg text-gray-300"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 1 }}
-        >
-          Développeur CPP
-        </motion.p>
-        <motion.p
-          className="mt-4 text-lg text-gray-300"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 1 }}
-        >
-          Développeur Opérationnel (DevOps)
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 1 }}
-          className="mt-6"
-        >
-          <Button className="bg-blue-600 px-6 py-3 rounded-lg">Me Contacter</Button>
-        </motion.div>
-
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-          className="absolute bottom-10"
-        >
-          <ArrowDown size={32} />
-        </motion.div>
-      </section>
-
-      {/* Section 2 : À propos */}
-      <motion.section
-        className="h-screen flex flex-col justify-center items-center"
-        variants={sectionVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        <h2 className="text-4xl font-bold">À Propos de Moi</h2>
-        <p className="mt-4 max-w-3xl text-center text-gray-300">
-          Je suis un jeune développeur passionné par les diverses technologies du web et de l'informatique.
-        </p>
-        <p className="mt-4 max-w-3xl text-center text-gray-300">
-          J'ai une expérience en développement web fullstack, en développement C++ ainsi qu'en DevOps.
-        </p>
-      </motion.section>
-
-      {/* Section 3 : Compétences (SkillsLayout) */}
-      <div className="relative bg-gray-100 dark:bg-gray-900">
-        <SkillsLayout />
-      </div>
-
-      {/* Section 4 : Contact */}
-      <motion.section
-        className="h-screen flex flex-col justify-center items-center"
-        variants={sectionVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        <h2 className="text-4xl font-bold">Me Contacter</h2>
-        <p className="mt-4 text-gray-300">Envoyez-moi un message pour échanger.</p>
-      </motion.section>
+    // Use dark background and white text globally
+    <div className="scroll-smooth snap-y snap-mandatory overflow-y-scroll h-screen bg-gray-900 text-white">
+      <HomeSection />
+      <AboutSection />
+      <SkillsSection />
+      <ProjectsSection />
+      <ContactSection />
     </div>
   );
 };
 
-export default Home;
+export default App;

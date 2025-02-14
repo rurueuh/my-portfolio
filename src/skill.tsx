@@ -1,87 +1,57 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
+const sections = ["Section 1", "Section 2", "Section 3"];
 
 export default function SkillsLayout() {
-  const [activeSection, setActiveSection] = useState("");
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  // Progression de scroll (0 -> 1) par section
-  const [webProgress, setWebProgress] = useState(0);
-  const [cppProgress, setCppProgress] = useState(0);
-  const [devopsProgress, setDevopsProgress] = useState(0);
-
-  // Refs pour mesurer la position / taille de chaque section
-  const webRef = useRef<HTMLElement | null>(null);
-  const cppRef = useRef<HTMLElement | null>(null);
-  const devopsRef = useRef<HTMLElement | null>(null);
-
-  // Intersection Observer : section active
-  const handleActiveSection = useCallback((sectionId: string) => {
-    setActiveSection(sectionId);
-  }, []);
-
-  // Calcul progression au scroll
   useEffect(() => {
-    function handleScroll() {
-      const scrollY = window.scrollY;
-      const viewportHeight = window.innerHeight;
-
-      function calcProgress(sectionEl: HTMLElement | null) {
-        if (!sectionEl) return 0;
-
-        const offsetSection = 1;
-        const offsetTop = sectionEl.offsetTop + (1480 * offsetSection);
-        const sectionHeight = sectionEl.offsetHeight + 600;
-        const distance = sectionHeight - viewportHeight;
-
-        const raw = (scrollY - offsetTop) / distance;
-
-        return Math.max(0, Math.min(1, raw));
+    const handleScroll = (event: WheelEvent) => {
+      event.preventDefault(); // Block default scroll behavior
+      if (event.deltaY > 0 && activeIndex < sections.length - 1) {
+        setActiveIndex((prev) => prev + 1);
+      } else if (event.deltaY < 0 && activeIndex > 0) {
+        setActiveIndex((prev) => prev - 1);
       }
-
-      setWebProgress(calcProgress(webRef.current));
-      setCppProgress(calcProgress(cppRef.current));
-      setDevopsProgress(calcProgress(devopsRef.current));
-    }
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // première init
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    };
+    window.addEventListener("wheel", handleScroll);
+    return () => window.removeEventListener("wheel", handleScroll);
+  }, [activeIndex]);
 
   return (
-    <div className="flex min-h-screen">
-      {/* Barre latérale */}
-      <aside className="sticky top-0 w-72 h-screen bg-gray-900 text-white p-4">
-        <h2 className="text-xl font-bold mb-6">Mes Compétences</h2>
-        <nav className="space-y-4">
-          <NavItem
-            href="#web"
-            label="Développement Web"
-            active={activeSection === "web"}
-            progress={webProgress}
-          />
-          <NavItem
-            href="#cpp"
-            label="C++"
-            active={activeSection === "cpp"}
-            progress={cppProgress}
-          />
-          <NavItem
-            href="#devops"
-            label="DevOps"
-            active={activeSection === "devops"}
-            progress={devopsProgress}
-          />
-        </nav>
-      </aside>
+    <div className="h-screen w-screen flex">
+      {/* Sidebar */}
+      <div className="w-1/4 h-full bg-gray-800 text-white flex flex-col items-center justify-center space-y-4">
+        {sections.map((section, index) => (
+          <button
+            key={index}
+            onClick={() => setActiveIndex(index)}
+            className={`px-4 py-2 rounded transition-all ${
+              activeIndex === index ? "bg-gray-600" : "bg-gray-700 hover:bg-gray-500"
+            }`}
+          >
+            {section}
+          </button>
+        ))}
+      </div>
 
-      {/* Contenu principal */}
-      <main className="flex-1 bg-white dark:bg-gray-800">
-        <WebSection parentRef={webRef} onActive={handleActiveSection} />
-        <CppSection parentRef={cppRef} onActive={handleActiveSection} />
-        <DevOpsSection parentRef={devopsRef} onActive={handleActiveSection} />
-      </main>
+      {/* Main Content */}
+      <div className="w-3/4 h-full flex items-center justify-center bg-gray-100 relative overflow-hidden">
+        <div
+          className="w-full h-full transition-transform duration-500 flex"
+          style={{ transform: `translateY(-${activeIndex * 100}%)` }}
+        >
+          {sections.map((section, index) => (
+            <div
+              key={index}
+              className="w-full h-full flex items-center justify-center text-3xl font-bold"
+            >
+              {section}
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
