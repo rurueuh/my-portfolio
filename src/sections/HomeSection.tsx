@@ -1,8 +1,5 @@
-// src/sections/HomeSection.tsx
 import React from 'react';
 import { motion } from 'framer-motion';
-// Replace this import with your actual logo file
-// import Logo from '../assets/logo.svg';
 
 const HomeSection: React.FC = () => {
   return (
@@ -11,7 +8,6 @@ const HomeSection: React.FC = () => {
       className="h-screen flex flex-col justify-center items-center 
                  bg-gradient-to-br from-gray-900 to-gray-800 snap-start"
     >
-      {/* <img src={Logo} alt="Logo" className="w-20 h-20 mb-4" /> */}
       <motion.h1
         className="text-5xl font-bold"
         initial={{ opacity: 0, y: -50 }}
