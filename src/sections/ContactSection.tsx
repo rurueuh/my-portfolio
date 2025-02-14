@@ -11,7 +11,7 @@ const ContactSection: React.FC = () => {
         className="text-4xl font-bold mb-4"
         initial={{ opacity: 0, x: 100 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: false}}
         transition={{ duration: 1 }}
       >
         Contact Me
@@ -20,7 +20,7 @@ const ContactSection: React.FC = () => {
         className="w-full max-w-md bg-gray-800 p-6 rounded shadow-md"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
+        viewport={{ once: false}}
         transition={{ duration: 1, delay: 0.5 }}
       >
         <div className="mb-4">
