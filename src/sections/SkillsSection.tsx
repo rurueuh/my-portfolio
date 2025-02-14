@@ -78,23 +78,8 @@ const SkillsSection: React.FC = () => {
     >
       <div className="w-4/5 h-4/5 flex shadow-lg shadow-black rounded-lg overflow-hidden bg-gray-800">
         <div className="w-1/4 bg-gray-700 p-4 flex flex-col items-center">
-          <div className="flex flex-col items-center space-y-2 mb-6">
-            <div
-              className={`w-3 h-3 rounded-full border-2 ${
-                currentIndex === 0 ? 'bg-blue-500 border-blue-500' : 'border-gray-400'
-              }`}
-            ></div>
-            <div
-              className={`w-3 h-3 rounded-full border-2 ${
-                currentIndex === 1 ? 'bg-blue-500 border-blue-500' : 'border-gray-400'
-              }`}
-            ></div>
-            <div
-              className={`w-3 h-3 rounded-full border-2 ${
-                currentIndex === 2 ? 'bg-blue-500 border-blue-500' : 'border-gray-400'
-              }`}
-            ></div>
-          </div>
+        <div className="flex flex-col items-center justify-center w-full h-full">
+
           <button
             onClick={() => {
               if (!isTransitioning) {
@@ -110,12 +95,15 @@ const SkillsSection: React.FC = () => {
                 setTimeout(() => setIsTransitioning(false), 600);
               }
             }}
-            className={`p-2 my-2 cursor-pointer transition-colors w-full text-center ${
-              currentIndex === 0
-                ? 'bg-gray-600 text-white'
-                : 'bg-transparent text-gray-300 hover:bg-gray-600'
-            }`}
+            className={`pr-2 my-2 flex gap-3 items-center justify-center cursor-pointer transition-colors w-full text-center ${currentIndex === 0
+              ? 'bg-gray-600 text-white'
+              : 'bg-transparent text-gray-300 hover:bg-gray-600'
+              }`}
           >
+            <div
+              className={`w-3 h-3 rounded-full border-2 ${currentIndex === 0 ? 'bg-blue-500 border-blue-500' : 'border-gray-400'
+                }`}
+            />
             Web Skills
           </button>
           <button
@@ -133,12 +121,15 @@ const SkillsSection: React.FC = () => {
                 setTimeout(() => setIsTransitioning(false), 600);
               }
             }}
-            className={`p-2 my-2 cursor-pointer transition-colors w-full text-center ${
-              currentIndex === 1
-                ? 'bg-gray-600 text-white'
-                : 'bg-transparent text-gray-300 hover:bg-gray-600'
-            }`}
+            className={`p-2 my-2 flex gap-3 items-center justify-center  cursor-pointer transition-colors w-full text-center ${currentIndex === 1
+              ? 'bg-gray-600 text-white'
+              : 'bg-transparent text-gray-300 hover:bg-gray-600'
+              }`}
           >
+            <div
+              className={`w-3 h-3 rounded-full border-2 ${currentIndex === 1 ? 'bg-blue-500 border-blue-500' : 'border-gray-400'
+                }`}
+            />
             C++ Skills
           </button>
           <button
@@ -156,14 +147,18 @@ const SkillsSection: React.FC = () => {
                 setTimeout(() => setIsTransitioning(false), 600);
               }
             }}
-            className={`p-2 my-2 cursor-pointer transition-colors w-full text-center ${
-              currentIndex === 2
-                ? 'bg-gray-600 text-white'
-                : 'bg-transparent text-gray-300 hover:bg-gray-600'
-            }`}
+            className={`p-2 my-2 flex gap-3 items-center justify-center  cursor-pointer transition-colors w-full text-center ${currentIndex === 2
+              ? 'bg-gray-600 text-white'
+              : 'bg-transparent text-gray-300 hover:bg-gray-600'
+              }`}
           >
+            <div
+              className={`w-3 h-3 rounded-full border-2 ${currentIndex === 2 ? 'bg-blue-500 border-blue-500' : 'border-gray-400'
+                }`}
+            />
             DevOps Skills
           </button>
+        </div>
         </div>
 
         <div className="relative w-3/4 p-8 bg-gray-800 overflow-hidden">
