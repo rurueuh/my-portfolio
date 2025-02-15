@@ -5,10 +5,17 @@ import Tags from '@/components/Tags';
 import Riloshost from '../assets/riloshost.svg';
 import NextJS from '../assets/nextjs.svg';
 import TypeScript from '../assets/typescript.svg';
+import JavaScript from '../assets/javascript.svg';
+import Pterodactyl from '../assets/ptero.png';
+import API from '../assets/api.svg';
+import RIOT from '../assets/riotgames.svg';
+import Stats from '../assets/stats.svg';
 import TailwindCSS from '../assets/tailwindcss.svg';
 import OVH from '../assets/ovh.svg';
 import Docker from '../assets/docker.svg';
 import Server from '../assets/server.svg';
+import CPP from '../assets/cpp.svg';
+import Project from '@/components/Project';
 
 const ProjectsSection: React.FC = () => {
   return (
@@ -20,74 +27,76 @@ const ProjectsSection: React.FC = () => {
         className="text-4xl font-bold mb-8"
         initial={{ opacity: 0, y: -50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false}}
+        viewport={{ once: false }}
         transition={{ duration: 0.8 }}
       >
         Projects
       </motion.h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-6xl px-4">
         {/* Project 1 */}
-        <motion.div
-          className="bg-gray-800 rounded-lg shadow-md p-6 text-gray-200 flex gap-4"
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: false}}
-          transition={{ duration: 0.5, delay: 0.0 }}
-        >
-          <aside className="items-center place-self-center mb-4">
-            <img
-              src={Riloshost}
-              alt="RilosHost Logo"
-              className="w-12 h-12 mr-4"
-            />
-          </aside>
-          <div>
-            <h3 className="text-2xl font-semibold mb-2 text-white">RilosHost</h3>
-            <p>Create a hosting game company with website, setup server, panel and more.</p>
-            <div className='gap-2 mt-4 mb-4 flex flex-row flex-wrap'>
-              <Tags text="TypeScript" logo={TypeScript} />
-              <Tags text="NextJS" logo={NextJS} />
-              <Tags text="TailwindCSS" logo={TailwindCSS} />
-              <Tags text="Server" logo={Server} />
-              <Tags text="OVH" logo={OVH} />
-              <Tags text="Docker" logo={Docker} />
-            </div>
-            <a href="https://riloshost.fr" target="_blank" rel="noreferrer" className="text-blue-500 hover:underline">
-              Visit Website
-            </a>
+        <Project logo={Riloshost}>
+          <h3 className="text-2xl font-semibold mb-2 text-white">RilosHost</h3>
+          <p>Create a hosting game company with website, setup server, panel and more.</p>
+          <div className='gap-2 mt-4 mb-4 flex flex-row flex-wrap'>
+            <Tags text="TypeScript" logo={TypeScript} link='https://www.typescriptlang.org/' />
+            <Tags text="NextJS" logo={NextJS} link='https://nextjs.org/' />
+            <Tags text="TailwindCSS" logo={TailwindCSS} link='https://tailwindcss.com/' />
+            <Tags text="Server" logo={Server} />
+            <Tags text="OVH" logo={OVH} link='https://www.ovh.com/' />
+            <Tags text="Docker" logo={Docker} link='https://www.docker.com/' />
+            <Tags text="Pterodactyl" logo={Pterodactyl} link='https://pterodactyl.io/' />
           </div>
-        </motion.div>
+          <a href="https://riloshost.fr" target="_blank" rel="noreferrer" className="text-blue-500 hover:underline">
+            Visit Website
+          </a>
+        </Project>
 
         {/* Project 2 */}
-        <motion.div
-          className="bg-gray-800 rounded-lg shadow-md p-6 text-gray-200"
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: false}}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          <h3 className="text-2xl font-semibold mb-2 text-white">Project 2</h3>
-          <p>This is a brief description of project 2.</p>
-        </motion.div>
+        <Project logo={Riloshost}>
+          <h3 className="text-2xl font-semibold mb-2 text-white">RilosHost Script</h3>
+          <p>Create a somes scripts for games</p>
+          <div className='gap-2 mt-4 mb-4 flex flex-row flex-wrap'>
+            <Tags text="JavaScript" logo={JavaScript} link='https://developer.mozilla.org/fr/docs/Web/JavaScript' />
+            <Tags text="Server" logo={Server} />
+            <Tags text="Docker" logo={Docker} link='https://www.docker.com/' />
+            <Tags text="CPP/C++" logo={CPP} link='https://www.cplusplus.com/' />
+          </div>
+          <div className="flex flex-row gap-2">
+            <a href="https://github.com/rurueuh/holdfastbalance" target="_blank" rel="noreferrer" className="text-blue-500 hover:underline">
+              Github Holdfast auto balance
+            </a>
+            <a href="https://github.com/rurueuh/crashArk" target="_blank" rel="noreferrer" className="text-blue-500 hover:underline">
+              Github ARK auto restart on crash
+            </a>
+          </div>
+        </Project>
 
         {/* Project 3 */}
-        <motion.div
-          className="bg-gray-800 rounded-lg shadow-md p-6 text-gray-200"
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: false}}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <h3 className="text-2xl font-semibold mb-2 text-white">Project 3</h3>
-          <p>This is a brief description of project 3.</p>
-        </motion.div>
+        <Project logo={RIOT}>
+          <h3 className="text-2xl font-semibold mb-2 text-white">League Of Legends Bot</h3>
+          <p>Create a Discord bot for tracking if one player is in ranked and if he win or not</p>
+          <div className='gap-2 mt-4 mb-4 flex flex-row flex-wrap'>
+            <Tags text="JavaScript" logo={JavaScript} link='https://developer.mozilla.org/fr/docs/Web/JavaScript' />
+            <Tags text="RiotGames" logo={RIOT} />
+            <Tags text="API" logo={API} />
+            <Tags text="Stats" logo={Stats} />
+          </div>
+          <div className="flex flex-row gap-2">
+            <a href="https://github.com/rurueuh/holdfastbalance" target="_blank" rel="noreferrer" className="text-blue-500 hover:underline">
+              Github Holdfast auto balance
+            </a>
+            <a href="https://github.com/rurueuh/crashArk" target="_blank" rel="noreferrer" className="text-blue-500 hover:underline">
+              Github ARK auto restart on crash
+            </a>
+          </div>
+        </Project>
 
         {/* Project 4 */}
         <motion.div
           className="bg-gray-800 rounded-lg shadow-md p-6 text-gray-200"
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: false}}
+          viewport={{ once: false }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           <h3 className="text-2xl font-semibold mb-2 text-white">Project 4</h3>
@@ -99,7 +108,7 @@ const ProjectsSection: React.FC = () => {
           className="bg-gray-800 rounded-lg shadow-md p-6 text-gray-200"
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: false}}
+          viewport={{ once: false }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           <h3 className="text-2xl font-semibold mb-2 text-white">Project 5</h3>
@@ -111,7 +120,7 @@ const ProjectsSection: React.FC = () => {
           className="bg-gray-800 rounded-lg shadow-md p-6 text-gray-200"
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: false}}
+          viewport={{ once: false }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
           <h3 className="text-2xl font-semibold mb-2 text-white">Project 6</h3>
@@ -123,7 +132,7 @@ const ProjectsSection: React.FC = () => {
           className="bg-gray-800 rounded-lg shadow-md p-6 text-gray-200"
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: false}}
+          viewport={{ once: false }}
           transition={{ duration: 0.5, delay: 0.6 }}
         >
           <h3 className="text-2xl font-semibold mb-2 text-white">Project 7</h3>
@@ -135,7 +144,7 @@ const ProjectsSection: React.FC = () => {
           className="bg-gray-800 rounded-lg shadow-md p-6 text-gray-200"
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: false}}
+          viewport={{ once: false }}
           transition={{ duration: 0.5, delay: 0.7 }}
         >
           <h3 className="text-2xl font-semibold mb-2 text-white">Project 8</h3>
@@ -147,7 +156,7 @@ const ProjectsSection: React.FC = () => {
           className="bg-gray-800 rounded-lg shadow-md p-6 text-gray-200"
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: false}}
+          viewport={{ once: false }}
           transition={{ duration: 0.5, delay: 0.8 }}
         >
           <h3 className="text-2xl font-semibold mb-2 text-white">Project 9</h3>
