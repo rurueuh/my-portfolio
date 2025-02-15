@@ -34,17 +34,17 @@ const ProjectsSection: React.FC = () => {
       </motion.h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-6xl px-4">
         {/* Project 1 */}
-        <Project logo={Riloshost}>
+        <Project logo={Riloshost} alt="RilosHost">
           <h3 className="text-2xl font-semibold mb-2 text-white">RilosHost</h3>
           <p>Create a hosting game company with website, setup server, panel and more.</p>
           <div className='gap-2 mt-4 mb-4 flex flex-row flex-wrap'>
-            <Tags text="TypeScript" logo={TypeScript} link='https://www.typescriptlang.org/' />
-            <Tags text="NextJS" logo={NextJS} link='https://nextjs.org/' />
-            <Tags text="TailwindCSS" logo={TailwindCSS} link='https://tailwindcss.com/' />
-            <Tags text="Server" logo={Server} />
-            <Tags text="OVH" logo={OVH} link='https://www.ovh.com/' />
-            <Tags text="Docker" logo={Docker} link='https://www.docker.com/' />
-            <Tags text="Pterodactyl" logo={Pterodactyl} link='https://pterodactyl.io/' />
+            <Tags text="TypeScript" alt="TypeScript logo" logo={TypeScript} link='https://www.typescriptlang.org/' />
+            <Tags text="NextJS" alt="NextJS logo" logo={NextJS} link='https://nextjs.org/' />
+            <Tags text="TailwindCSS" alt="TailwindCSS logo" logo={TailwindCSS} link='https://tailwindcss.com/' />
+            <Tags text="Server" alt="Server logo" logo={Server} />
+            <Tags text="OVH" alt="OVH logo" logo={OVH} link='https://www.ovh.com/' />
+            <Tags text="Docker" alt="Docker logo" logo={Docker} link='https://www.docker.com/' />
+            <Tags text="Pterodactyl" alt="Pterodactyl logo" logo={Pterodactyl} link='https://pterodactyl.io/' />
           </div>
           <a href="https://riloshost.fr" target="_blank" rel="noreferrer" className="text-blue-500 hover:underline">
             Visit Website
@@ -52,14 +52,14 @@ const ProjectsSection: React.FC = () => {
         </Project>
 
         {/* Project 2 */}
-        <Project logo={Riloshost}>
+        <Project logo={Riloshost} alt="RilosHost">
           <h3 className="text-2xl font-semibold mb-2 text-white">RilosHost Script</h3>
           <p>Create a somes scripts for games</p>
           <div className='gap-2 mt-4 mb-4 flex flex-row flex-wrap'>
-            <Tags text="JavaScript" logo={JavaScript} link='https://developer.mozilla.org/fr/docs/Web/JavaScript' />
-            <Tags text="Server" logo={Server} />
-            <Tags text="Docker" logo={Docker} link='https://www.docker.com/' />
-            <Tags text="CPP/C++" logo={CPP} link='https://www.cplusplus.com/' />
+            <Tags text="JavaScript" alt="JavaScript logo" logo={JavaScript} link='https://developer.mozilla.org/fr/docs/Web/JavaScript' />
+            <Tags text="Server" alt="Server logo" logo={Server} />
+            <Tags text="Docker" alt="Docker logo" logo={Docker} link='https://www.docker.com/' />
+            <Tags text="CPP/C++" alt="CPP logo" logo={CPP} link='https://www.cplusplus.com/' />
           </div>
           <div className="flex flex-row gap-2">
             <a href="https://github.com/rurueuh/holdfastbalance" target="_blank" rel="noreferrer" className="text-blue-500 hover:underline">
@@ -72,14 +72,14 @@ const ProjectsSection: React.FC = () => {
         </Project>
 
         {/* Project 3 */}
-        <Project logo={RIOT}>
+        <Project logo={RIOT} alt="Riot Games">
           <h3 className="text-2xl font-semibold mb-2 text-white">League Of Legends Bot</h3>
           <p>Create a Discord bot for tracking if one player is in ranked and if he win or not</p>
           <div className='gap-2 mt-4 mb-4 flex flex-row flex-wrap'>
-            <Tags text="JavaScript" logo={JavaScript} link='https://developer.mozilla.org/fr/docs/Web/JavaScript' />
-            <Tags text="RiotGames" logo={RIOT} />
-            <Tags text="API" logo={API} />
-            <Tags text="Stats" logo={Stats} />
+            <Tags text="JavaScript" alt="JavaScript logo" logo={JavaScript} link='https://developer.mozilla.org/fr/docs/Web/JavaScript' />
+            <Tags text="RiotGames" alt="RiotGames logo" logo={RIOT} />
+            <Tags text="API" alt="API logo" logo={API} />
+            <Tags text="Stats" alt="Stats logo" logo={Stats} />
           </div>
           <div className="flex flex-row gap-2">
             <a href="https://github.com/rurueuh/holdfastbalance" target="_blank" rel="noreferrer" className="text-blue-500 hover:underline">
