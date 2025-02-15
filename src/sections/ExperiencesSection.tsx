@@ -24,7 +24,7 @@ const ExperiencesSection: React.FC = () => {
                         transition={{ duration: 0.6 }}
                     >
                         <div className="absolute left-1/2 transform -translate-x-1/2 z-10 w-6 h-6 rounded-full bg-blue-500 border-4 border-gray-900"></div>
-                        <a href='https://epitech.eu' target='_blank' rel='noreferrer'>
+                        <a href='https://www.insitaction.com/' target='_blank' rel='noreferrer'>
                         <motion.div
                             initial={{ opacity: 0, x: 500 }}
                             whileInView={{ opacity: 1, x: 150 }}
