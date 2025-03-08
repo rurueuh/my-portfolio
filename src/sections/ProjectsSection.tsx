@@ -135,7 +135,7 @@ const PROJECTS: ProjectData[] = [
     title: "Website Portfolio",
     description: "Create a website portfolio to show my projects and my skills",
     logo: Game,
-    alt: "Game Undercover logo",
+    alt: "Website Portfolio no logo",
     tags: [
       { text: "React", alt: "React logo", logo: ReactJS, link: "https://reactjs.org/" },
       { text: "TailwindCSS", alt: "TailwindCSS logo", logo: TailwindCSS, link: "https://tailwindcss.com/" },
