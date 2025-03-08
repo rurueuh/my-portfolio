@@ -1,4 +1,3 @@
-// src/App.tsx
 import React from 'react';
 import HomeSection from './sections/HomeSection';
 import AboutSection from './sections/AboutSection';
@@ -9,7 +8,6 @@ import ExperiencesSection from './sections/ExperiencesSection';
 
 const App: React.FC = () => {
   return (
-    // Use dark background and white text globally
     <div className="scroll-smooth snap-y snap-mandatory overflow-y-scroll h-screen bg-gray-900 text-white">
       <HomeSection />
       <AboutSection />

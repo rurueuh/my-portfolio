@@ -8,7 +8,7 @@ export default function SkillsLayout() {
 
   useEffect(() => {
     const handleScroll = (event: WheelEvent) => {
-      event.preventDefault(); // Block default scroll behavior
+      event.preventDefault();
       if (event.deltaY > 0 && activeIndex < sections.length - 1) {
         setActiveIndex((prev) => prev + 1);
       } else if (event.deltaY < 0 && activeIndex > 0) {
@@ -101,8 +101,6 @@ function WebSection({
 }) {
   const { ref, inView } = useInView({
     threshold: 0,
-    // On décale la zone d'observation de 50% en haut et en bas,
-    // pour éviter qu'elle soit activée trop tôt
     rootMargin: "-50% 0px -50% 0px",
   });
 
@@ -114,7 +112,6 @@ function WebSection({
     <section
       id="web"
       ref={parentRef}
-      // section plus haute que l'écran => progression
       className="h-[100vh] border-b border-gray-200 dark:border-gray-700 flex items-start pt-10"
     >
       <motion.div

@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// Individual Skill Components
 const WebSkills: React.FC = () => (
   <div>
     <h2 className="text-3xl font-bold mb-4">Web Skills</h2>
