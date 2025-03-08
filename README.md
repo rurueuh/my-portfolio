@@ -2,6 +2,8 @@
 
 Ce projet est un portfolio moderne développé avec React, TypeScript et Vite, utilisant les dernières technologies web pour une expérience utilisateur optimale.
 
+[disponible en ligne](https://rurueuh.fr/)
+
 ## 🚀 Technologies Utilisées
 
 - **React 19** - Bibliothèque UI moderne
