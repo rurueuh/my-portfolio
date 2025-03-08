@@ -14,7 +14,7 @@ const HomeSection: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        Developer Portfolio
+        Ruru Portfolio
       </motion.h1>
       <motion.p
         className="text-xl mt-4 text-gray-300"
@@ -22,7 +22,7 @@ const HomeSection: React.FC = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.5 }}
       >
-        Welcome to my presentation website.
+        Welcome to my presentation website. for contact me, mail me at ruru@rurueuh.fr
       </motion.p>
     </section>
   );
