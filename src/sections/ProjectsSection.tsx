@@ -143,7 +143,7 @@ const PROJECTS: ProjectData[] = [
       { text: "Vite", alt: "Vite logo", logo: Vite, link: "https://vitejs.dev/" },
     ],
     links: [
-      { text: "View on GitHub", url: "https://github.com/rurueuh/website-portfolio" }
+      { text: "View on GitHub", url: "https://github.com/rurueuh/my-portfolio" }
     ]
   }
 ];
