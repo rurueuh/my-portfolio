@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import { useInView } from "react-intersection-observer";
-import { motion } from "framer-motion";
 const sections = ["Section 1", "Section 2", "Section 3"];
 
 export default function SkillsLayout() {
